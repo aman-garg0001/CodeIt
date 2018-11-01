@@ -1,0 +1,161 @@
+
+<!doctype html>
+<html>
+ <head>
+
+   <style>
+   body{margin: 0 0 0 0;}
+     #b{ height:500px; width:1350px;   color:green; border:2px solid green; font-size:45px; padding: 5px 5px; text-align:center; overflow:hide; background-color:white; 
+     vertical-align:middle; display:table-cell;
+     box-shadow: 5px 5px 10px grey;
+     animation: pr 0.2s ease-in 10;
+     margin: 0 0 0 0;
+ } 
+    
+    .button{ height:70px; width:1350px;
+      background-color:white;
+      border:1px solid green;
+      
+      color:red;
+      padding: 7px 7px;
+      text-align:center;
+      transition: all 0.4s;
+      }
+    
+    .button:hover{background-color:green; color:white;}
+    
+    
+    .in{height:70px; width:1350px; font-family:fantasy; font-size:50px; transition: all 0.6s; padding:4px 5px; }
+    .in:hover{border:2px solid #005599; box-shadow: 7px 7px 30px grey; }
+
+    .c{
+    	width:0px; 
+    	height:0px;
+    	background-color: white;
+    	
+    	transition: all 0.3s;
+
+    }
+    #c:hover{  }
+    
+    #t{
+    	position: absolute;
+    	top: 100px;
+    	left: 500px;
+    	color: white;
+    	font-size: 100px;
+    	font-family:fantasy;
+    	mix-blend-mode:lighten;
+    }
+
+
+    
+    @keyframes par
+    {
+      
+      50%{transform:translatey(50px);}
+      100%{}
+    }
+
+   </style>
+
+ </head>
+ 
+ <body>
+ <center id="con">
+
+ 	<div id="b"><div id="t">Check your BMI</div>
+ 			<div class="c" id="c1"></div>
+ 			<div class="c" id="c2"></div>
+ 			<div class="c" id="c3"></div>
+ 			<div class="c" id="c4"></div>
+
+ 	</div>
+
+ <form id="a" action=# method="get">
+   <input class="in" type=number id="wt" placeholder=" weight in kg.">
+   <br>
+   <input class="in" type=number id="ht" placeholder=" height in cm."><br>
+   <button type="submit" class="button" id="bt" onclick="calc()"> BMI </button>
+ </form>
+   <br>
+   
+   
+   
+ <center>
+ 
+ <script>
+   var w=document.getElementById("wt");
+   var h=document.getElementById("ht");
+   var b=document.getElementById("b");
+
+   var c1=document.getElementById("c1");
+   var c2=document.getElementById("c2");
+   var c3=document.getElementById("c3");
+   
+   var t=document.getElementById("t");
+   var con=document.getElementById("con");
+   
+    
+   function calc()
+   {
+   
+
+    wt=w.value; ht=h.value;
+    var bmi=wt/((ht*ht)/10000);
+    t.innerHTML=Math.round(bmi*100)/100;4
+   
+   if(bmi<18) {
+   c1.style.background="linear-gradient(lime,yellow)"; 
+   con.style.backgroundColor="yellow"; 
+   c1.style.width="1350px";
+   c1.style.height="500px";
+
+   c2.style.width="0px";
+   c2.style.height="0px";
+   c3.style.width="0px";
+   c3.style.height="0px";
+   t.innerHTML+="<br> Underweight"}
+
+
+   if((bmi>=18)&&(bmi<22)) {
+   c2.style.background="linear-gradient(lime,lightblue)";
+   con.style.backgroundColor="lightgreen";
+   t.innerHTML+="<br> Normal";
+   //b.style.animationName="par";
+
+   c2.style.width="1350px";
+   c2.style.height="500px";
+
+   c1.style.width="0px";
+   c1.style.height="0px";
+   c3.style.width="0px";
+   c3.style.height="0px";
+
+}
+
+
+
+   if(bmi>22)
+   	{ 
+   c3.style.background="linear-gradient(red,orange)";
+   con.style.backgroundColor="orange";
+   
+   c3.style.width="1350px";
+   c3.style.height="500px";
+
+   c2.style.width="0px";
+   c2.style.height="0px";
+   c1.style.width="0px";
+   c1.style.height="0px";
+
+
+   t.innerHTML+="<br> Obese"}
+   
+   }
+  
+  
+ </script>
+ 
+ </body>
+</html>
